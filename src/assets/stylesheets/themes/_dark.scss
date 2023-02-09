@@ -1,0 +1,16 @@
+// -----------------------------------------------------------------------------
+// When having several themes, this file contains everything related to the
+// default one.
+// -----------------------------------------------------------------------------
+
+.theme-dark {
+  background-color: $dark-navy;
+  .text-main {
+    color: $white;
+  }
+  .header {
+    background-color: $light-navy;
+    color: $white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0562443);
+  }
+}
