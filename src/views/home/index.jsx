@@ -4,6 +4,7 @@ import React, {
 import {
   Col, Container, Row,
 } from 'react-bootstrap';
+import Skeleton from 'react-loading-skeleton';
 import Header from '../../components/header';
 import Api from '../../services';
 import CountryCard from './country-card';
@@ -13,9 +14,14 @@ import SearchInput from './search-input';
 function Home() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const getCountries = () => {
-    Api.countries.getCountries().then((response) => setCountries(response));
+    setLoading(true);
+    Api.countries.getCountries().then((response) => {
+      setCountries(response);
+      setLoading(false);
+    }).catch(() => setLoading(false));
   };
 
   useEffect(() => {
@@ -50,13 +56,29 @@ function Home() {
       <section className="pb-5">
         <Container>
           <Row>
-            {countries?.map((country, index) => {
-              return (
-                <Col md={3} key={index}>
-                  <CountryCard data={country} />
-                </Col>
-              );
-            })}
+            {loading
+              ? (
+                <>
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]?.map((index) => {
+                    return (
+                      <Col md={3} key={index}>
+                        <Skeleton height={355} width="100%" className="mb-3" />
+                      </Col>
+                    );
+                  })}
+                </>
+              )
+              : (
+                <>
+                  {countries?.map((country, index) => {
+                    return (
+                      <Col md={3} key={index}>
+                        <CountryCard data={country} />
+                      </Col>
+                    );
+                  })}
+                </>
+              )}
           </Row>
         </Container>
       </section>

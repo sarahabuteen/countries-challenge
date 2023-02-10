@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ThemeContext from './contexts/theme-context';
 import Country from './views/country';
@@ -17,6 +18,7 @@ function App() {
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <main className={`theme-${theme}`}>
+        <Toaster />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />

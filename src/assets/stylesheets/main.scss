@@ -17,19 +17,19 @@
 
 // 4. Layout-related sections
 @import
-  'layout/header',
-  'layout/footer';
+  'layout/header';
 
 // 5. Components
 @import
   'components/button',
   'components/input-group',
   'components/react-select',
-  'components/card';
+  'components/card',
+  'react-loading-skeleton/dist/skeleton.css';
 
 // 6. Page-specific styles
 @import
-  'pages/home';
+  'pages/country';
 
 // 7. Themes
 @import

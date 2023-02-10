@@ -1,6 +1,7 @@
 import { ArrowLeft } from 'iconsax-react';
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import { toast } from 'react-hot-toast';
 import { Link, useParams } from 'react-router-dom';
 import Header from '../../components/header';
 import Api from '../../services';
@@ -10,7 +11,9 @@ function Country() {
   const [country, setCountry] = useState(undefined);
 
   useEffect(() => {
-    Api.countries.getCountriesByName(name).then((response) => setCountry(response[0]));
+    Api.countries.getCountriesByName(name)
+      .then((response) => setCountry(response[0]))
+      .catch((error) => toast.error(error?.response?.data?.message));
   }, [name]);
 
   const renderLanguages = (languages) => {
@@ -25,7 +28,7 @@ function Country() {
   return (
     <>
       <Header />
-      <section className="pt-5">
+      <section className="country-section pt-5">
         <Container>
           <Row className="py-5">
             <Col md={12}>
@@ -38,7 +41,7 @@ function Country() {
           </Row>
           <Row>
             <Col md={6}>
-              <img src={country?.flags?.svg} alt={country?.name?.common} width="100%" className="rounded mb-4 mb-md-0" />
+              <img src={country?.flags?.svg} alt={country?.name?.common} className="flag rounded mb-4 mb-md-0" />
             </Col>
             <Col md={6} className="d-flex flex-column justify-content-center ps-md-5">
               <h1 className="text-main fw-bolder h2 mb-4">{country?.name?.common}</h1>
