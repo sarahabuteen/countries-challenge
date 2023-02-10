@@ -6,7 +6,7 @@ function CountryCard({ data }) {
   const navigate = useNavigate();
   return (
     <Card className="cursor-pointer" onClick={() => navigate(`/country/${data?.name?.common?.toLowerCase()}`)}>
-      <Card.Img variant="top" src={data?.flags?.svg} />
+      <Card.Img variant="top" src={data?.flags?.svg} alt={data?.name?.common} />
       <Card.Body>
         <Card.Title className="text-main fw-bolder mb-3">{data?.name?.common}</Card.Title>
         <Card.Text className="text-main mb-1">
