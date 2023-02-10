@@ -8,4 +8,11 @@ html, body, #root {
 
 .theme-light {
   background-color: $offwhite;
+  min-height: 100vh;
+}
+
+@media (min-width: 1400px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width: 1500px;
+  }
 }

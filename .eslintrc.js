@@ -43,6 +43,7 @@ module.exports = {
     'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
     'react/no-unknown-property': 'off',
     'react/jsx-no-constructed-context-values': 'off',
+    'react/no-array-index-key': 'off',
   },
   env: {
     browser: true,

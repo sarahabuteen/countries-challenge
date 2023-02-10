@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ThemeContext from './contexts/theme-context';
+import Country from './views/country';
 import Home from './views/home';
 
 function App() {
@@ -15,13 +16,14 @@ function App() {
   const [theme, setTheme] = useState(getCurrentTheme());
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      <div className={`theme-${theme}`}>
+      <main className={`theme-${theme}`}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/country/:name" element={<Country />} />
           </Routes>
         </BrowserRouter>
-      </div>
+      </main>
     </ThemeContext.Provider>
   );
 }
